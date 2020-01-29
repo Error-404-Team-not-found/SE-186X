@@ -59,6 +59,9 @@ public class DecryptorSkeleton {
      */
     public static void convertBinaryArrayToDecimalArray(int[] toDecrypt) {
         // TODO
+    	String binary = toDecrypt;
+    	int decimal = Integer.parseInt(binary,2);
+    	System.out.print(decimal);
     }
 
 
@@ -94,11 +97,10 @@ public class DecryptorSkeleton {
      */
     public static void divideArrayValues(int[] toDecrypt) {
         // TODO
-    	for (int i = 0; i <  toDecryt.length; i++){
-            System.out.print((toDecryt[i]/5) + " ");
+    	for (int i = 0; i <  toDecrypt.length; i++){
+            System.out.print((toDecrypt[i]/5) + " ");
         }
     }
-
 
     /**
      * STEP 4: COMPLETE THIS METHOD. ONCE COMPLETED, HAVE THE TEAM MEMBER
