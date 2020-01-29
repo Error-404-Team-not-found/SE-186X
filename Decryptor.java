@@ -25,7 +25,7 @@ import java.util.HashMap;
  * @author ...
  * @author ...
  */
-public class DecryptorSkeleton {
+public class Decryptor {
     public static void main(String[] args) {
         int[] toDecrypt = {
                 101001, 1001101, 1010011, 11010, 10, 10000000, 1001100, 1101011, 11,
@@ -59,9 +59,6 @@ public class DecryptorSkeleton {
      */
     public static void convertBinaryArrayToDecimalArray(int[] toDecrypt) {
         // TODO
-    	String binary = toDecrypt;
-    	int decimal = Integer.parseInt(binary,2);
-    	System.out.print(decimal);
     }
 
 
@@ -80,7 +77,23 @@ public class DecryptorSkeleton {
      * @param toDecrypt - The array to be decoded.
      */
     public static void shiftArrayValues(int[] toDecrypt) {
-        // TODO
+        for(int i =0; i < toDecrypt.length; i++)
+        {
+        	if(i % 3 == 0)
+        	{
+        		toDecrypt[i] -= 1;
+        	}
+        	
+        	else if(i % 3 == 1) 
+        	{
+        		toDecrypt[i] -= 2;
+        	}
+        	
+        	else
+        	{
+        		toDecrypt[i] -= 3;
+        	}
+        }
     }
 
 
@@ -97,10 +110,8 @@ public class DecryptorSkeleton {
      */
     public static void divideArrayValues(int[] toDecrypt) {
         // TODO
-    	for (int i = 0; i <  toDecrypt.length; i++){
-            System.out.print((toDecrypt[i]/5) + " ");
-        }
     }
+
 
     /**
      * STEP 4: COMPLETE THIS METHOD. ONCE COMPLETED, HAVE THE TEAM MEMBER
