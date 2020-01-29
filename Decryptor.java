@@ -1,31 +1,15 @@
 import java.util.Arrays;
 import java.util.HashMap;
 
-/**
- * For this mini-assignment, the goal is to git you guys more familiar with Git.
- * You'll need to finish each of the methods. We made certain to make each method
- * relatively simple, as we are aware not everyone has experience with Java yet.
- *
- * Fear not, most of these can be solved with simple Google searches. The primary
- * goal is to make it such that each one of your team members makes at least one
- * commit (most likely a commit per method completion). Once finished, show your
- * TA the working code, as well as your Git history showing every team member
- * made a contribution. Explain what problems you had. Did you get your first
- * taste of merge conflicts? Potentially this could have been separated into multiple
- * files? What are your thoughts?
- *
- * Remember, GOOGLE IS YOUR FRIEND! If you feel you're working too hard on a problem,
- * you most likely are. Oh, and if you are completely new to Java, you're going to
- * love how much easier it is to work with arrays (and other data structures) in this
- * language as opposed to C (The C solution for this is literally like 8x more complex).
- *
+/*
  * Place your @author tags here.
  * @author First Last : netid@iastate.edu
- * @author ...
- * @author ...
- * @author ...
+ * @author Chris Peterson : cep1@iastate.edu
+ * @author Camden Berry : caberry@iastate.edu
+ * @author Cade Breeding : breeding@iastate.edu
+ * @author Ethan Ochoa : eochoa01@iastate.edu
  */
-public class Decryptor {
+public class DecryptorSkeleton {
     public static void main(String[] args) {
         int[] toDecrypt = {
                 101001, 1001101, 1010011, 11010, 10, 10000000, 1001100, 1101011, 11,
@@ -34,95 +18,63 @@ public class Decryptor {
         };
 
         convertBinaryArrayToDecimalArray(toDecrypt);
-        System.out.println(Arrays.toString(toDecrypt)); // As a check, the first value will be 41 and the last is 58.
+        System.out.print("   Convert binary to decimal: ");
+        System.out.println(Arrays.toString(toDecrypt));
 
         shiftArrayValues(toDecrypt);
-        System.out.println(Arrays.toString(toDecrypt)); // As a check, the first value will be 40 and the last is 55.
+        System.out.print("          Run the mod method: ");
+        System.out.println(Arrays.toString(toDecrypt));
 
         divideArrayValues(toDecrypt);
-        System.out.println(Arrays.toString(toDecrypt)); // As a check, the first value will be 8 and the last is 11.
+        System.out.print("       Integer division by 5: ");
+        System.out.println(Arrays.toString(toDecrypt)); 
 
-        System.out.println(A1Z26Cypher(toDecrypt));     // As a check, the first word in this String is "hope".
+        System.out.print("Convert integers to a string: ");
+        System.out.println(A1Z26Cypher(toDecrypt));
+
     }
 
 
-    /**
-     * STEP 1: COMPLETE THIS METHOD. ONCE COMPLETED, HAVE THE TEAM MEMBER
-     *         WHO COMPLETED THIS MAKE AND PUSH THE COMMIT TO GITHUB.
-     *
-     * Given an array of binary representations of numbers,
-     * converts each value into its decimal representation.
-     *
-     * HINT: This can be done in two lines of code.
-     *
-     * @param toDecrypt - The array to be decoded.
+    /*
+     * Runs a for loop through each value of the array
+     * For each value
+     * 		-Converts the number to a string
+     * 		-Converts that string into an integer
+     * 		-Assigns that integer to the element's index
      */
     public static void convertBinaryArrayToDecimalArray(int[] toDecrypt) {
-        // TODO
+    	for (int i = 0; i < toDecrypt.length; i++)
+    		toDecrypt[i] = Integer.parseInt(toDecrypt[i] + "",2);	
     }
 
 
-    /**
-     * STEP 2: COMPLETE THIS METHOD. ONCE COMPLETED, HAVE THE TEAM MEMBER
-     *         WHO COMPLETED THIS MAKE AND PUSH THE COMMIT TO GITHUB.
-     *
-     * Given an array of decimal ints, perform the following:
-     *      If the array index mod 3 == 0, modify its value to be itself - 1.
-     *      Else if the array index mod 3 == 1, modify its value to be itself - 2.
-     *      Otherwise, modify its value to be itself - 3.
-     *
-     * HINT: This CAN be done in two lines of logic. Realistically though,
-     *       it's easier to read and expectation is about seven lines of code.
-     *
-     * @param toDecrypt - The array to be decoded.
+    /*
+     * Runs a for loop that goes through each value of the array
+     * Uses mod 3 on the index of each element
+     * 		-If mod 3 = 0, subtracts 1
+     * 		-If mod 3 = 1, subtracts 2
+     * 		-If mod 3 = 2, subtracts 3
      */
     public static void shiftArrayValues(int[] toDecrypt) {
-        for(int i =0; i < toDecrypt.length; i++)
-        {
-        	if(i % 3 == 0)
-        	{
-        		toDecrypt[i] -= 1;
-        	}
-        	
-        	else if(i % 3 == 1) 
-        	{
-        		toDecrypt[i] -= 2;
-        	}
-        	
-        	else
-        	{
-        		toDecrypt[i] -= 3;
-        	}
-        }
+        // TODO
+    	for (int i = 0; i < toDecrypt.length; i++)
+            toDecrypt[i] = i % 3 == 0 ? toDecrypt[i] - 1 :
+                           i % 3 == 1 ? toDecrypt[i] - 2 : toDecrypt[i] - 3;
     }
 
 
-    /**
-     * STEP 3: COMPLETE THIS METHOD. ONCE COMPLETED, HAVE THE TEAM MEMBER
-     *         WHO COMPLETED THIS MAKE AND PUSH THE COMMIT TO GITHUB.
-     *
-     * Given an array of decimal ints, set the value
-     * of each index to be itself divided by 5.
-     *
-     * HINT: This can be done in two lines of code.
-     *
-     * @param toDecrypt - The array to be decoded.
+    /*
+     * Performs integer division on each element and reassigns it to the index
      */
     public static void divideArrayValues(int[] toDecrypt) {
-        // TODO
+    	for (int i = 0; i < toDecrypt.length; i++)
+    		toDecrypt[i] = toDecrypt[i] / 5;
     }
 
 
-    /**
-     * STEP 4: COMPLETE THIS METHOD. ONCE COMPLETED, HAVE THE TEAM MEMBER
-     *         WHO COMPLETED THIS MAKE AND PUSH THE COMMIT TO GITHUB.
-     *
-     * Given an array of decimal ints, using the A1Z26 Cypher, build a String
-     * that correlates each decimal value to a char (Character, a-z).
-     *
-     * HINT: This can be done in two additional lines of code.
-     *
-     * @param toDecrypt - The array to be decoded.
+    /*
+     * Assigns each number (0-26) a character value
+     * Reads entire array and creates string by translating int values
      */
     public static String A1Z26Cypher(int[] toDecrypt) {
         HashMap<Integer, Character> cypher = new HashMap<>();
@@ -155,9 +107,8 @@ public class Decryptor {
         cypher.put(26, 'z');
 
         StringBuilder solution = new StringBuilder();
-
-        // TODO
-
+        for (int i = 0; i < toDecrypt.length; i++)
+        	solution.append(cypher.get(toDecrypt[i]));
         solution.append('!');
         return solution.toString();
     }
